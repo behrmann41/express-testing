@@ -31,4 +31,13 @@ router.get('/:id', function (req, res, next){
   });
 });
 
+router.delete('/:id', function (req, res, next){
+  items.remove({_id: req.params.id}, function (err, item){
+    if (err) {
+      res.send(err)
+    }
+    res.status(200).json(item)
+  })
+})
+
 module.exports = router;

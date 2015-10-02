@@ -59,3 +59,17 @@ describe('GET api/items/:id', function (){
       })
   })
 })
+
+describe('DELETE api/items/:id', function(){
+  it('deletes an item', function (done){
+    request(app)
+      .del('/api/items/55c050595ae876b6b79ad318')
+      .expect(200)
+      .end(function (err, res){
+        if (err) {
+          return done(err);
+        }
+        done();
+      })
+  })
+})
