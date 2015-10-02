@@ -13,4 +13,13 @@ router.post('/', function (req, res, next){
   })
 })
 
+router.put('/:id', function (req, res, next){
+  items.findAndModify({_id: req.params.id}, req.body, function(err, item){
+    if (err) {
+      throw err
+    }
+    res.json(req.body)
+  })
+})
+
 module.exports = router;

@@ -27,3 +27,20 @@ describe('POST api/items', function (){
       });
   });
 });
+
+describe('PUT api/items/:id', function () {
+  it('updates a resource', function (done){
+    request(app)
+      .put('/api/items/55c050595ae876b6b79ad318')
+      .send({title: 'from test'})
+      .expect(200)
+      .end(function(err, res) {
+        if (err) {
+          throw err;
+        } else {
+          assert.equal(res.body.title, 'from test')
+          done()
+        }
+      });
+  });
+});
