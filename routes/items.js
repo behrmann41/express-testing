@@ -4,6 +4,15 @@ var db = require('monk')('localhost/items')
 var items = db.get('items')
 var request = require('supertest')
 
+router.get('/', function (req, res, next){
+  items.find({}, function (err, items){
+    if (err) {
+      res.send(err)
+    }
+    res.status(200).json(items)
+  })
+})
+
 router.post('/', function (req, res, next){
   items.insert(req.body, function (err, item){
     if (err) {

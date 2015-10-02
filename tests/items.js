@@ -12,6 +12,21 @@ before(function(done) {
   });
 });
 
+describe('GET api/items', function (){
+  it('gets all items', function (done){
+    request(app)
+      .get('/api/items')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end(function(err, res){
+        if (err) {
+          return done(err)
+        }
+        done();
+      })
+  })
+})
+
 describe('POST api/items', function (){
   it('creates a new resource', function (done){
     request(app)
