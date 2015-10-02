@@ -44,3 +44,18 @@ describe('PUT api/items/:id', function () {
       });
   });
 });
+
+describe('GET api/items/:id', function (){
+  it('responds with item', function (done){
+    request(app)
+      .get('/api/items/55c050595ae876b6b79ad318')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end(function (err, res){
+        if (err) {
+          return done(err);
+        }
+        done()
+      })
+  })
+})
